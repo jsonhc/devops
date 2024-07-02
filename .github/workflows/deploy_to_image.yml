@@ -23,6 +23,9 @@ jobs:
           repository: 'vastxie/99AI' # 替换为目标仓库
           ref: 'main' # 替换为目标分支
 
+      - name: test
+        run: pwd && ls -l  
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
