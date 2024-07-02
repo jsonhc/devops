@@ -2,7 +2,7 @@ name: push to github
 on:
   push:
     branches:
-    - 'master'
+    - 'main'
 jobs:
   deploy:
     name: test
@@ -31,7 +31,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: "jsonhcstart"
-          password: ""
+          password: ${DOCKER_PASSWORD}
 
       - name: build and push 
         run: |
