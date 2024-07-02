@@ -5,26 +5,20 @@ on:
     - 'main'
 jobs:
   deploy:
-    name: Deploy Hexo Public To Pages
+    name: test
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Shanghai
 
     steps:
-      # from: https://github.com/jsonhc/topic.git
+      - name: Checkout https://github.com/vastxie/99AI.git
+        uses: vastxie/99AI@main  
+        
       - name: Checkout Repository master branch
         uses: actions/checkout@main
 
       - name: pwd
-        run: pwd && ls -l
-
-      - name: Checkout https://github.com/vastxie/99AI.git
-        uses: vastxie/99AI@main
-        with:
-          repository: 'vastxie/99AI'
-
-      - name: test
-        run: ls -l && pwd
+        run: pwd && ls -l /home/runner/work
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
