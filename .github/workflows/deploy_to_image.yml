@@ -35,5 +35,5 @@ jobs:
 
       - name: build and push 
         run: |
-          cd vastxie && docker build -t jsonhcstart/vastxie:${{ github.sha }}
+          cd vastxie && docker build -t jsonhcstart/vastxie:${{ github.sha }} .
           docker push jsonhcstart/vastxie:${{ github.sha }}
