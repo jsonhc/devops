@@ -1,0 +1,43 @@
+name: push to github
+on:
+  push:
+    branches:
+    - 'main'
+jobs:
+  deploy:
+    name: Deploy Hexo Public To Pages
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+
+    steps:
+      # from: https://github.com/jsonhc/topic.git
+      - name: Checkout Repository master branch
+        uses: actions/checkout@master
+
+      - name: Checkout https://github.com/vastxie/99AI.git
+        uses: vastxie/99AI@v3.3.0
+        with:
+          repository: 'vastxie/99AI'
+          ref: 'main'
+      - name: test
+        run: ls -l && pwd
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: "jsonhcstart"
+          password: "HHq123456*"
+
+      - name: Build and Push container images
+        uses: docker/build-push-action@v4.0.0
+        id: build-and-push
+        with:
+          push: true
+          tags: jsonhcstart/topic:${{ github.sha }}
