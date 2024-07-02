@@ -20,6 +20,7 @@ jobs:
       - name: Checkout https://github.com/vastxie/99AI.git
         uses: actions/checkout@v2
         with:
+          path: 'vastxie'
           repository: 'vastxie/99AI' # 替换为目标仓库
           ref: 'main' # 替换为目标分支
 
