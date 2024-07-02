@@ -1,7 +1,8 @@
 name: push to github
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '16 23 * * *'
+    - cron: '30 * * * *'
 
 jobs:
   deploy:
@@ -36,5 +37,5 @@ jobs:
 
       - name: build and push 
         run: |
-          cd vastxie && docker build -t registry.cn-hangzhou.aliyuncs.com/jsonhc/vastxie:${{ github.sha }} .
-          docker push registry.cn-hangzhou.aliyuncs.com/jsonhc/vastxie:${{ github.sha }}
+          cd vastxie && docker build -t registry.cn-hangzhou.aliyuncs.com/jsonhc/vastxie:latest .
+          docker push registry.cn-hangzhou.aliyuncs.com/jsonhc/vastxie:latest
