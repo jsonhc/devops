@@ -15,7 +15,10 @@ jobs:
         uses: actions/checkout@main
 
       - name: pwd
-        run: pwd && ls -l /home/runner/work
+        run: pwd &&ls -l /home/runner/work/devops/devops && ls -l /home/runner/work/_actions
+
+      - name: Checkout https://github.com/vastxie/99AI.git
+        uses: vastxie/99AI@main 
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
