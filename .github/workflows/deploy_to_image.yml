@@ -1,11 +1,12 @@
 name: push to github
 on:
-  push:
-    branches:
-    - 'main'
+  workflow_dispatch:
+  schedule:
+    - cron: '00 23 * * *'
+
 jobs:
   deploy:
-    name: test
+    name: sync vastxie and build and push image
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Shanghai
