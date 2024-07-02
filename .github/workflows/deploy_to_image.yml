@@ -13,13 +13,16 @@ jobs:
     steps:
       # from: https://github.com/jsonhc/topic.git
       - name: Checkout Repository master branch
-        uses: actions/checkout@master
+        uses: actions/checkout@main
+
+      - name: pwd
+        run: pwd && ls -l
 
       - name: Checkout https://github.com/vastxie/99AI.git
-        uses: vastxie/99AI@v3.3.0
+        uses: vastxie/99AI@main
         with:
           repository: 'vastxie/99AI'
-          ref: 'main'
+
       - name: test
         run: ls -l && pwd
 
