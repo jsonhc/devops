@@ -11,9 +11,6 @@ jobs:
       TZ: Asia/Shanghai
 
     steps:
-      - name: Checkout https://github.com/vastxie/99AI.git
-        uses: vastxie/99AI@main  
-        
       - name: Checkout Repository master branch
         uses: actions/checkout@main
 
