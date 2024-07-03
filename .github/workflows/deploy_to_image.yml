@@ -25,13 +25,6 @@ jobs:
           repository: 'vastxie/99AI' # 替换为目标仓库
           ref: 'main' # 替换为目标分支
 
-      - name: replace picture
-        run: |
-          pwd && ls -l vastxie
-          cp -a logo.png vastxie/public/logo.png 
-          sed -i 's/AIWeb-Admin/lawweb-Admin/g' vastxie/public/admin/index.html
-          grep "lawweb-Admin" vastxie/public/admin/index.html
-
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -47,6 +40,13 @@ jobs:
           secret_key: ${{ secrets.SECRET_KEY }}
           bucket: ${{ secrets.BUCKET }}
           region: ap-shanghai
+
+      - name: replace picture
+        run: |
+          pwd && ls -l vastxie
+          cp -a logo.png vastxie/public/logo.png 
+          sed -i 's/AIWeb-Admin/lawweb-Admin/g' vastxie/public/admin/index.html
+          grep "lawweb-Admin" vastxie/public/admin/index.html
 
       - name: pwd
         run: pwd && ls -l
