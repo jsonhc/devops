@@ -35,6 +35,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: download bucket from cos
+        uses: zkqiang/tencent-cos-action@v0.1.0
+        with:
+          args: download jsonhc-1254359126/* ./
+          secret_id: ${{ secrets.SECRET_ID }}
+          secret_key: ${{ secrets.SECRET_KEY }}
+          bucket: ${{ secrets.BUCKET }}
+          region: ap-shanghai
+
+      - name: pwd
+        run: pwd && ls -l
+
       - name: build and push 
         run: |
           cd vastxie && docker build -t registry.cn-hangzhou.aliyuncs.com/jsonhc/vastxie:latest .
