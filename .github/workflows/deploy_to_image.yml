@@ -1,8 +1,8 @@
 name: push to github
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 16 * * *'
+  # schedule:
+  #  - cron: '30 16 * * *'
 
 jobs:
   deploy:
